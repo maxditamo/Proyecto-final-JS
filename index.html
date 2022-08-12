@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio AJAX en tu proyecto</title>
+<!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.jpg">
+
+ 
+</head>
+<body>
+<!-- Logo -->
+
+        <header class="p-3 bg-dark text-white">
+            <div class="container">
+              <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <img src="img/one-step-logo.jpg" class="me-4" alt="one-step-logo" width="70" height="auto"></a><use href="index.html"></use>
+                </a>
+<!-- Nav -->
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                  <li><a href="index.html" class="nav-link px-2 text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Home</font></font></a></li>
+                  <li><a href="#" class="nav-link px-2 text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Reservas</font></font></a></li>
+                  <li><a href="#" class="nav-link px-2 text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ofertas</font></font></a></li>
+                  <li><a href="#" class="nav-link px-2 text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Destinos</font></font></a></li>
+                  <li><a href="#" class="nav-link px-2 text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ayuda</font></font></a></li>
+                </ul>
+
+<!-- Imput Buscar -->
+
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                  <input id= "search" type="search" class="form-control form-control-dark text-white bg-dark" placeholder="Buscar" aria-label="Búsqueda">
+                </form>
+
+<!-- Iniciar sesion y registrarse  -->
+
+                <div class="text-end">
+                  <a href="#"><button type="button" class="btn btn-outline-light me-2" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Iniciar sesión</font></font></button></a>
+                  <button type="button" class="btn btn-outline-light"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Registarse</font></font></button>
+                </div>
+
+<!-- boton carrito -->
+
+                <button id="boton-carrito" type="button" class="btn btn-warning ms-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path>
+                    </svg><span id="contadorCarrito"> 0</span>
+                </button>
+              </div>
+            </div>
+          </header>
+          <div id="mostrar-usuario"></div>
+
+          <form id="formulario-usuario"  class="row g-3 d-flex justify-content-center mt-2 mb-2">
+            <div class="col-auto">
+              <input id="user" type="text" class="form-control"  placeholder="Ingrese nombre de usuario">
+            </div>
+            <div class="col-auto">
+              <input id="addButton" type="submit" class="btn btn-outline-dark mb-3" value="Submit"></input>
+            </div>
+          </form>
+
+<!-- Title -->
+
+          <h1 class="title">One Step Sky Team</h1>
+ 
+<!-- main -->
+
+    <main id="contenedor-productos"></main>
+
+<!-- modal -->
+
+    <div class="modal-contenedor">
+        <div class="modal-carrito">
+            <h3>Carrito</h3>
+            <button id="carritoCerrar" type="button" class="btn-close"  aria-label="Cerca"></button>
+            <div id="carrito-contenedor"> 
+            </div>    
+            <p class="precioProducto">Precio total: $<span id="precioTotal"> 0</span></p>
+                <div id="terminar"  class="modal-footer flex-column border-top-0">
+                    <button type="button" class="btn btn-lg btn-primary w-100 mx-0 mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Finalizar</font></font></button>  
+                </div>
+        </div>
+    </div>
+
+<!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Script  -->
+    <script src="js/stock.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/fetch.js"></script>
+    
+
+</body>
+</html>
